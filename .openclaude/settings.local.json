@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\Cyber\\\\Desktop\\\\Portifolio\\\\src\\\\components' -Filter '*Toggle*' -ErrorAction SilentlyContinue | Select-Object Name\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path 'C:\\\\Users\\\\Cyber\\\\Desktop\\\\Portifolio\\\\src\\\\components' | Select-Object Name\")",
+      "Bash(dir:*)",
+      "Bash(npm run:*)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Cyber\\\\Desktop\\\\Portifolio\\\\src\" -Recurse -File)",
+      "Bash(Select-Object FullName)",
+      "Bash(taskkill /F /PID 19612)",
+      "Bash(taskkill //F //PID 19612)",
+      "Bash(npx skills:*)",
+      "Bash(Get-Process)",
+      "Bash(Where-Object {$_rocessName -like \"*node*\"})",
+      "Bash(Stop-Process -Force)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(taskkill //IM node.exe //F)",
+      "Bash(findstr /i \".html .js .jsx .ts .tsx .md .css\")",
+      "Bash(uipro init:*)",
+      "Bash(uipro --help)",
+      "Bash(uipro)",
+      "Bash(python3:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(Get-Process node:*)",
+      "Bash(taskkill:*)",
+      "Bash(rm -rf .next)",
+      "Bash(rmdir /s /q .next)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000 :3003 :3004)"
+    ]
+  }
+}
