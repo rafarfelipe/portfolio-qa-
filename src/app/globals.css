@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: 163 100% 43%;
-  --color-primary-dark: 163 100% 35%;
-  --color-secondary: 259 100% 58%;
+  --color-primary: 220 100% 50%;
+  --color-primary-dark: 220 100% 40%;
+  --color-secondary: 250 100% 60%;
   --color-accent: 350 86% 61%;
   --color-dark-900: 222.2 84% 4.9%;
   --color-dark-800: 217.2 32.6% 17.5%;
@@ -68,7 +68,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
