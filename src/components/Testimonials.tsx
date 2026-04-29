@@ -19,7 +19,7 @@ const testimonials: Testimonial[] = [
     name: "Ana Silva",
     role: "Tech Lead",
     company: "TechCorp",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    image: "/images/testimonials/ana-silva.jpg",
     content: "O Rafael tem um olhar excepcional para detalhes. Sua capacidade de identificar bugs sutis e comunicar problemas de forma clara fez toda diferença na qualidade do nosso produto.",
     rating: 5,
   },
@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
     name: "Carlos Mendes",
     role: "Engineering Manager",
     company: "StartupXYZ",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    image: "/images/testimonials/carlos-mendes.jpg",
     content: "Trabalhar com o Rafael foi um privilégio. Sua automação de testes reduziu significativamente nosso tempo de release e aumentou a confiança nas entregas.",
     rating: 5,
   },
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     name: "Fernanda Costa",
     role: "Product Owner",
     company: "FinanceApp",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    image: "/images/testimonials/fernanda-costa.jpg",
     content: "Ele vai além do esperado. O Rafael não apenas encontra bugs, mas entende o impacto no negócio e prioriza o que realmente importa para o usuário.",
     rating: 5,
   },
@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
     name: "Roberto Santos",
     role: "Senior Developer",
     company: "DevHouse",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    image: "/images/testimonials/roberto-santos.jpg",
     content: "Como desenvolvedor, ter um QA como o Rafael no time é invaluable. Seus testes automatizados me ajudaram a escrever código mais robusto desde o início.",
     rating: 5,
   },
@@ -59,6 +59,7 @@ export default function Testimonials() {
     const interval = setInterval(() => setCurrentIndex((prev) => (prev + 1) % testimonials.length), 5000);
     return () => clearInterval(interval);
   }, [isPaused]);
+
   const { elementRef } = useIntersectionObserver<HTMLElement>({
     threshold: 0.2,
     freezeOnceVisible: true,
@@ -78,7 +79,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={elementRef}
-      className="py-20 sm:py-32 bg-[hsl(var(--card))]"
+      className="py-20 sm:py-32 bg-card"
       aria-labelledby="testimonials-heading"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,16 +89,16 @@ export default function Testimonials() {
         >
           <span className="text-primary">&lt;</span>
           <span className="text-gradient"> Depoimentos </span>
-          <span className="text-primary">/&gt;</span>
+          <span className="text-primary">&gt;</span>
         </h2>
 
-        <p className="text-center text-[hsl(var(--muted-foreground))] mb-16 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
           O que colegas e parceiros de trabalho dizem sobre minha atuação
         </p>
 
         {/* Main Testimonial Card */}
         <div
-          className="relative bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-2xl p-8 sm:p-12 hover:border-primary/30 transition-all duration-500"
+          className="relative bg-background border border-border rounded-2xl p-8 sm:p-12 hover:border-primary/30 transition-all duration-500"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           role="region"
@@ -113,7 +114,7 @@ export default function Testimonials() {
           {/* Navigation Buttons */}
           <button
             onClick={prevTestimonial}
-            className="absolute top-4 left-4 sm:left-auto sm:right-16 p-2 rounded-full bg-[hsl(var(--card))] border border-[hsl(var(--border))] hover:border-primary hover:bg-primary/10 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--background))]"
+            className="absolute top-4 left-4 sm:left-auto sm:right-16 p-2 rounded-full bg-card border border-border hover:border-primary hover:bg-primary/10 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
             aria-label="Previous testimonial"
           >
             <ChevronLeft size={20} className="text-primary" />
@@ -121,7 +122,7 @@ export default function Testimonials() {
 
           <button
             onClick={nextTestimonial}
-            className="absolute top-4 right-4 sm:right-4 p-2 rounded-full bg-[hsl(var(--card))] border border-[hsl(var(--border))] hover:border-primary hover:bg-primary/10 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--background))]"
+            className="absolute top-4 right-4 sm:right-4 p-2 rounded-full bg-card border border-border hover:border-primary hover:bg-primary/10 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
             aria-label="Next testimonial"
           >
             <ChevronRight size={20} className="text-primary" />
@@ -142,22 +143,22 @@ export default function Testimonials() {
                   className={`${
                     i < currentTestimonial.rating
                       ? "fill-primary text-primary"
-                      : "fill-[hsl(var(--muted))] text-[hsl(var(--muted))]"
+                      : "fill-muted text-muted"
                   }`}
                 />
               ))}
             </div>
 
             {/* Testimonial Text */}
-            <blockquote className="text-lg sm:text-xl text-[hsl(var(--foreground))] leading-relaxed mb-8 italic">
+            <blockquote className="text-lg sm:text-xl text-foreground leading-relaxed mb-8 italic">
               "{currentTestimonial.content}"
             </blockquote>
 
             {/* Author */}
             <div className="flex items-center justify-center gap-4">
               {hasImageError(currentIndex) ? (
-                <div className="w-14 h-14 rounded-full bg-[hsl(var(--muted))] flex items-center justify-center border-2 border-primary/30">
-                  <span className="text-xl font-bold text-[hsl(var(--muted-foreground))]">
+                <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center border-2 border-primary/30">
+                  <span className="text-xl font-bold text-muted-foreground">
                     {currentTestimonial.name.charAt(0)}
                   </span>
                 </div>
@@ -171,10 +172,10 @@ export default function Testimonials() {
                 />
               )}
               <div className="text-left">
-                <div className="font-semibold text-[hsl(var(--foreground))]">
+                <div className="font-semibold text-foreground">
                   {currentTestimonial.name}
                 </div>
-                <div className="text-sm text-[hsl(var(--muted-foreground))]">
+                <div className="text-sm text-muted-foreground">
                   {currentTestimonial.role} @ {currentTestimonial.company}
                 </div>
               </div>
@@ -187,10 +188,10 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--background))] ${
+                className={`w-2 h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background ${
                   index === currentIndex
                     ? "bg-primary w-6"
-                    : "bg-[hsl(var(--muted))] hover:bg-primary/50"
+                    : "bg-muted hover:bg-primary/50"
                 }`}
                 role="tab"
                 aria-selected={index === currentIndex}
@@ -205,12 +206,12 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="p-6 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-xl hover:border-primary/30 transition-all duration-300"
+              className="p-6 bg-background border border-border rounded-xl hover:border-primary/30 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
                 {hasImageError(index) ? (
-                  <div className="w-12 h-12 rounded-full bg-[hsl(var(--muted))] flex items-center justify-center">
-                    <span className="text-lg font-bold text-[hsl(var(--muted-foreground))]">
+                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+                    <span className="text-lg font-bold text-muted-foreground">
                       {testimonial.name.charAt(0)}
                     </span>
                   </div>
@@ -224,15 +225,15 @@ export default function Testimonials() {
                   />
                 )}
                 <div>
-                  <div className="font-medium text-[hsl(var(--foreground))]">
+                  <div className="font-medium text-foreground">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-[hsl(var(--muted-foreground))]">
+                  <div className="text-sm text-muted-foreground">
                     {testimonial.role}
                   </div>
                 </div>
               </div>
-              <p className="text-[hsl(var(--muted-foreground))] text-sm line-clamp-3">
+              <p className="text-muted-foreground text-sm line-clamp-3">
                 "{testimonial.content}"
               </p>
             </div>

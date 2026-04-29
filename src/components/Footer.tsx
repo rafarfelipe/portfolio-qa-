@@ -21,15 +21,15 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-[hsl(var(--background))] border-t border-[hsl(var(--border))] py-8">
+      <footer className="bg-background border-t border-border py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-[hsl(var(--muted-foreground))] mb-2">
+            <p className="text-muted-foreground mb-2">
               Feito com{" "}
               <span className="text-accent">💙</span>
               {" "}e dedicação
             </p>
-            <p className="text-[hsl(var(--muted-foreground))] text-sm">
+            <p className="text-muted-foreground text-sm">
               © 2026 - Todos os direitos reservados
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function Footer() {
         }`}
         aria-label="Scroll to top"
       >
-        <ArrowUp size={24} className="text-dark-900" />
+        <ArrowUp size={24} className="text-background" />
       </button>
     </>
   );

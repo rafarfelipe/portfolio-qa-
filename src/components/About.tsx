@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 sm:py-32 bg-[hsl(var(--card))]"
+      className="py-20 sm:py-32 bg-card"
       aria-labelledby="about-heading"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,19 +34,19 @@ export default function About() {
 
           {/* Texto */}
           <div className="flex-1 text-center lg:text-left">
-            <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               Olá! Sou <span className="text-primary font-semibold">Rafael Felipe</span>, um
               <span className="text-primary font-semibold"> QA Engineer</span> apaixonado por garantir
               a excelência de softwares. Acredito que cada bug encontrado é uma oportunidade de aprendizado
               e cada teste automatizado é um passo em direção à entrega de valor real.
             </p>
-            <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               Atualmente estou graduando em <span className="text-primary font-semibold">Engenharia de Software</span> e
               me especializando em <span className="text-primary font-semibold">automação de testes</span> com
               Cypress, Selenium e API testing. Meu foco é ajudar equipes a entregarem produtos confiáveis
               e de alta qualidade.
             </p>
-            <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               Quando não estou testando, você pode me encontrar explorando novas tecnologias,
               contribuindo para a comunidade QA ou compartilhando conhecimento com outros profissionais.
             </p>

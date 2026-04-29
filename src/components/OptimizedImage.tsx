@@ -85,8 +85,8 @@ export default function OptimizedImage({
 
       {/* Error State */}
       {hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[hsl(var(--muted))]">
-          <span className="text-[hsl(var(--muted-foreground))] text-sm">
+        <div className="absolute inset-0 flex items-center justify-center bg-muted">
+          <span className="text-muted-foreground text-sm">
             Failed to load image
           </span>
         </div>

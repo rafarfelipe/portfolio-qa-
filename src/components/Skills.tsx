@@ -60,7 +60,7 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="py-20 sm:py-32 bg-[hsl(var(--card))]"
+      className="py-20 sm:py-32 bg-card"
       aria-labelledby="skills-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,9 +77,9 @@ export default function Skills() {
             {skillCategories.map((category, catIndex) => (
               <div
                 key={category.title}
-                className="bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-2xl p-6 hover:border-primary/50 transition-all duration-300"
+                className="bg-background border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300"
               >
-                <h3 className="text-xl font-semibold text-[hsl(var(--foreground))] mb-4 flex items-center gap-2">
+                <h3 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                   <category.icon className="text-primary" size={20} />
                   {category.title}
                 </h3>
@@ -87,11 +87,11 @@ export default function Skills() {
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name} className="space-y-1">
                       <div className="flex justify-between mb-1">
-                        <span className="text-[hsl(var(--muted-foreground))]" role="listitem">{skill.name}</span>
+                        <span className="text-muted-foreground" role="listitem">{skill.name}</span>
                         <span className="text-primary font-mono" aria-label={`${skill.name} proficiency: ${skill.level} percent`}>{skill.level}%</span>
                       </div>
                       <div
-                        className="h-2 bg-[hsl(var(--muted))] rounded-full overflow-hidden"
+                        className="h-2 bg-muted rounded-full overflow-hidden"
                         role="progressbar"
                         aria-valuenow={skill.level}
                         aria-valuemin={0}
@@ -118,11 +118,11 @@ export default function Skills() {
             {tools.map((tool, index) => (
               <div
                 key={tool.name}
-                className="group flex flex-col items-center gap-3 p-6 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-2xl hover:border-primary/50 hover:-translate-y-1 transition-all duration-300"
+                className="group flex flex-col items-center gap-3 p-6 bg-background border border-border rounded-2xl hover:border-primary/50 hover:-translate-y-1 transition-all duration-300"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <tool.icon className="text-primary w-8 h-8 group-hover:scale-110 transition-transform" />
-                <span className="text-[hsl(var(--muted-foreground))] font-medium">{tool.name}</span>
+                <span className="text-muted-foreground font-medium">{tool.name}</span>
               </div>
             ))}
           </div>
@@ -130,15 +130,15 @@ export default function Skills() {
 
         {/* Test Types */}
         <div className="text-center">
-          <h3 className="text-xl font-semibold text-[hsl(var(--muted-foreground))] mb-6">Tipos de Teste</h3>
+          <h3 className="text-xl font-semibold text-muted-foreground mb-6">Tipos de Teste</h3>
           <div className="flex flex-wrap justify-center gap-3">
             {testTypes.map((type, index) => (
               <div
                 key={type.name}
-                className="flex items-center gap-2 px-4 py-2 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-full hover:border-primary hover:-translate-y-1 transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2 bg-background border border-border rounded-full hover:border-primary hover:-translate-y-1 transition-all duration-300"
               >
                 <type.icon className="text-primary w-4 h-4" />
-                <span className="text-[hsl(var(--foreground))] font-medium">{type.name}</span>
+                <span className="text-foreground font-medium">{type.name}</span>
               </div>
             ))}
           </div>

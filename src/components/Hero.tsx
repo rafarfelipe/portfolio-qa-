@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Bug, CheckCircle, FlaskConical, Plug, Zap } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { typewriterTexts } from "../constants";
 import { useTypewriter } from "../hooks/useTypewriter";
@@ -31,10 +31,10 @@ export default function Hero() {
         />
 
         <div className="absolute inset-0">
-          {["🐛", "✓", "🧪", "🔌", "⚡"].map((icon, i) => (
+          {[Bug, CheckCircle, FlaskConical, Plug, Zap].map((Icon, i) => (
             <div
               key={i}
-              className="absolute text-4xl opacity-20 animate-float"
+              className="absolute text-4xl text-primary/20 animate-float"
               style={{
                 top: `${10 + (i * 15)}%`,
                 left: `${5 + (i * 15)}%`,
@@ -42,7 +42,7 @@ export default function Hero() {
               }}
               aria-hidden="true"
             >
-              {icon}
+              <Icon size={32} />
             </div>
           ))}
         </div>
@@ -53,17 +53,17 @@ export default function Hero() {
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--card))] backdrop-blur border border-[hsl(var(--border))] rounded-full mb-6 animate-fade-in"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-card backdrop-blur border border-border rounded-full mb-6 animate-fade-in"
           role="status"
           aria-label="Currently available for work opportunities"
         >
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-          <span className="text-sm text-[hsl(var(--muted-foreground))]">Open to work</span>
+          <span className="text-sm text-muted-foreground">Open to work</span>
         </div>
 
         <div className="mb-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-          <span className="block text-lg sm:text-xl text-[hsl(var(--muted-foreground))] mb-2">Olá, eu sou</span>
-          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
+          <span className="block text-lg sm:text-xl text-muted-foreground mb-2">Olá, eu sou</span>
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold">
             <span className="text-gradient">Rafael Felipe</span>
           </span>
         </div>
@@ -77,7 +77,7 @@ export default function Hero() {
           <span className="sr-only">{displayedText}</span>
         </div>
 
-        <p className="text-[hsl(var(--muted-foreground))] text-lg sm:text-xl max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+        <p className="text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           Transformo bugs em features através de testes automatizados.
           Especialista em garantir qualidade com Cypress e Selenium
         </p>
@@ -85,7 +85,7 @@ export default function Hero() {
         <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-dark-900 font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-background font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
           >
             Vamos conversar
             <ArrowRight size={20} />
@@ -94,7 +94,7 @@ export default function Hero() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
           >
             <GithubIcon size={20} />
             GitHub
@@ -103,32 +103,32 @@ export default function Hero() {
             href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
           >
             <LinkedinIcon size={20} />
             LinkedIn
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 sm:gap-8 max-w-xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-extrabold text-gradient">25%</div>
-            <div className="text-xs sm:text-sm text-[hsl(var(--muted-foreground))] mt-1">Redução de bugs</div>
+            <div className="text-xs sm:text-sm text-muted-foreground mt-1">Redução de bugs</div>
           </div>
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-extrabold text-gradient">10+</div>
-            <div className="text-xs sm:text-sm text-[hsl(var(--muted-foreground))] mt-1">Certificações</div>
+            <div className="text-xs sm:text-sm text-muted-foreground mt-1">Certificações</div>
           </div>
         </div>
       </div>
 
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[hsl(var(--muted-foreground))] animate-bounce"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-bounce"
       >
         <span className="text-xs">Scroll down</span>
-        <div className="w-6 h-10 border-2 border-[hsl(var(--border))] rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-[hsl(var(--muted-foreground))] rounded-full mt-2 animate-pulse" />
+        <div className="w-6 h-10 border-2 border-border rounded-full flex justify-center">
+          <div className="w-1 h-2 bg-muted-foreground rounded-full mt-2 animate-pulse" />
         </div>
         <ChevronDown size={20} />
       </a>

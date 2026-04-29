@@ -57,7 +57,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 sm:py-32 bg-[hsl(var(--background))]"
+      className="py-20 sm:py-32 bg-background"
       aria-labelledby="projects-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +68,7 @@ export default function Projects() {
           <span className="text-gradient"> Projetos </span>
         </h2>
 
-        <p className="text-center text-[hsl(var(--muted-foreground))] mb-16 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
           Uma seleção dos meus principais projetos em automação de testes e qualidade de software
         </p>
 
@@ -77,11 +77,11 @@ export default function Projects() {
           {visibleProjectsList.map((project, index) => (
             <article
               key={project.id}
-              className="project-card group relative bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary"
+              className="project-card group relative bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden bg-[hsl(var(--muted))]">
+              <div className="relative h-48 overflow-hidden bg-muted">
                 {!hasImageError(index) ? (
                   <img
                     src={project.image}
@@ -91,15 +91,15 @@ export default function Projects() {
                     onError={() => handleImageError(index)}
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-[hsl(var(--muted-foreground))]">
+                  <div className="w-full h-full flex items-center justify-center text-muted-foreground">
                     <span className="text-4xl">💻</span>
                   </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[hsl(var(--card))] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
 
                 {/* Featured Badge */}
                 {project.featured && (
-                  <span className="absolute top-3 right-3 px-3 py-1 bg-primary/90 text-dark-900 text-xs font-semibold rounded-full">
+                  <span className="absolute top-3 right-3 px-3 py-1 bg-primary/90 text-background text-xs font-semibold rounded-full">
                     Destaque
                   </span>
                 )}
@@ -107,11 +107,11 @@ export default function Projects() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-[hsl(var(--foreground))] mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
 
-                <p className="text-[hsl(var(--muted-foreground))] mb-4 line-clamp-3">
+                <p className="text-muted-foreground mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -120,7 +120,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 text-xs font-medium bg-[hsl(var(--muted))] text-[hsl(var(--muted-foreground))] rounded-full"
+                      className="px-3 py-1 text-xs font-medium bg-muted text-muted-foreground rounded-full"
                     >
                       {tag}
                     </span>
@@ -133,7 +133,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--card))] rounded px-2 py-1"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-card rounded px-2 py-1"
                     aria-label={`View ${project.title} on GitHub`}
                   >
                     <GithubIcon size={16} />
@@ -144,7 +144,7 @@ export default function Projects() {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm font-medium text-[hsl(var(--muted-foreground))] hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--card))] rounded px-2 py-1"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-card rounded px-2 py-1"
                       aria-label={`View live demo of ${project.title}`}
                     >
                       <ExternalLink size={16} />
@@ -166,7 +166,7 @@ export default function Projects() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-medium rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--background))]"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-medium rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-2 py-1"
             aria-label="View more projects on GitHub"
           >
             <GithubIcon size={20} />

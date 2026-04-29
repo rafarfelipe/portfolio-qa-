@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #00dc82;
-  --color-primary-dark: #00a86b;
-  --color-secondary: #7c3aed;
-  --color-accent: #f43f5e;
-  --color-dark-900: #0f172a;
-  --color-dark-800: #1e293b;
-  --color-dark-700: #334155;
-  --color-dark-600: #475569;
+  --color-primary: 163 100% 43%;
+  --color-primary-dark: 163 100% 35%;
+  --color-secondary: 259 100% 58%;
+  --color-accent: 350 86% 61%;
+  --color-dark-900: 222.2 84% 4.9%;
+  --color-dark-800: 217.2 32.6% 17.5%;
+  --color-dark-700: 215 20.2% 65.1%;
+  --color-dark-600: 215 20.2% 55%;
   --font-family-sans: 'Inter', system-ui, sans-serif;
   --font-family-mono: 'JetBrains Mono', monospace;
 }
@@ -68,7 +68,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #00dc82, #7c3aed, #f43f5e);
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

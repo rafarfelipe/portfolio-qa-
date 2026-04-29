@@ -71,7 +71,7 @@ const certifications = [
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-20 sm:py-32 bg-[hsl(var(--card))]">
+    <section id="certifications" className="py-20 sm:py-32 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 id="certifications-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold font-mono text-center mb-16">
           <span className="text-gradient"> Certificações </span>
@@ -81,17 +81,17 @@ export default function Certifications() {
           {certifications.map((cert, index) => (
             <div
               key={cert.title}
-              className="group relative p-6 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-2xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2"
+              className="group relative p-6 bg-background border border-border rounded-2xl hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-2"
             >
               <div className="relative">
                 <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                   {cert.badge}
                 </div>
-                <h3 className="text-lg font-semibold text-[hsl(var(--foreground))] mb-2 line-clamp-2 min-h-[3.5rem]">
+                <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2 min-h-[3.5rem]">
                   {cert.title}
                 </h3>
-                <p className="text-[hsl(var(--muted-foreground))] text-sm mb-3">{cert.school}</p>
-                <span className="inline-block px-3 py-1 bg-[hsl(var(--muted))] text-primary text-xs font-mono rounded-full">
+                <p className="text-muted-foreground text-sm mb-3">{cert.school}</p>
+                <span className="inline-block px-3 py-1 bg-muted text-primary text-xs font-mono rounded-full">
                   {cert.year}
                 </span>
               </div>
