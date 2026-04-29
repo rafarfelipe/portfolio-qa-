@@ -3,15 +3,12 @@
 import { useState, useEffect } from "react";
 
 export function useTheme() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    // Get initial theme from localStorage or default to dark
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      setIsDark(saved === 'dark');
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') !== 'light';
     }
-  }, []);
+    return true; // default dark
+  });
 
   useEffect(() => {
     const root = document.documentElement;
@@ -23,11 +20,7 @@ export function useTheme() {
   }, [isDark]);
 
   const toggleTheme = () => {
-    setIsDark(prev => {
-      const newValue = !prev;
-      console.log('Toggling theme:', prev, '->', newValue);
-      return newValue;
-    });
+    setIsDark(prev => !prev);
   };
 
   return { isDark, toggleTheme };

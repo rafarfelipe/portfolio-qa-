@@ -1,10 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
+
 interface LoadingScreenProps {
   onComplete: () => void;
 }
 
 export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
+  useEffect(() => {
+    const timer = setTimeout(onComplete, 2500);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
   return (
     <div className="fixed inset-0 bg-dark-900 flex items-center justify-center z-50">
       <div className="w-full max-w-md mx-4">
@@ -48,7 +55,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
             <div className="flex items-center gap-2">
               <span className="text-primary">$</span>
-              <span className="text-primary animate-blink">_</span>
+              <span className="text-primary animate-cursor">_</span>
             </div>
           </div>
         </div>

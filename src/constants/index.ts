@@ -1,6 +1,10 @@
 import { Mail, Phone } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../components/icons";
 
+export const SITE_URL = "https://rafarfelipe.github.io/portifolio";
+export const GITHUB_URL = "https://github.com/rafarfelipe";
+export const LINKEDIN_URL = "https://linkedin.com/in/rafaelrfelipe";
+
 export const navLinks = [
   { href: "#home", label: "Início" },
   { href: "#about", label: "Sobre" },
@@ -27,13 +31,13 @@ export const contactInfo = [
     icon: LinkedinIcon,
     label: "LinkedIn",
     value: "linkedin.com/in/rafaelrfelipe",
-    href: "https://linkedin.com/in/rafaelrfelipe/",
+    href: LINKEDIN_URL,
   },
   {
     icon: GithubIcon,
     label: "GitHub",
     value: "github.com/rafarfelipe",
-    href: "https://github.com/rafarfelipe",
+    href: GITHUB_URL,
   },
 ];
 

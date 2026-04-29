@@ -3,8 +3,10 @@
 import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "./icons";
 import { useImageError } from "../hooks/useImageError";
+import { GITHUB_URL } from "@/constants";
 
-interface GitHubProject {
+interface Project {
+  id: number;
   title: string;
   description: string;
   tags: string[];
@@ -14,8 +16,9 @@ interface GitHubProject {
   featured: boolean;
 }
 
-const projects: GitHubProject[] = [
+const projects: Project[] = [
   {
+    id: 1,
     title: "QA Automation Cypress",
     description: "Framework completo para testes E2E com Cypress, incluindo padrões Page Object e relatórios customizados.",
     tags: ["Cypress", "JavaScript", "Page Object", "E2E"],
@@ -25,6 +28,7 @@ const projects: GitHubProject[] = [
     featured: true,
   },
   {
+    id: 2,
     title: "API Tests Cypress",
     description: "Testes automatizados para APIs REST usando Cypress, com validações de schema e performance.",
     tags: ["Cypress", "REST API", "JavaScript", "API Testing"],
@@ -34,6 +38,7 @@ const projects: GitHubProject[] = [
     featured: true,
   },
   {
+    id: 3,
     title: "Robot Framework API",
     description: "Testes de API com Robot Framework para validação de endpoints e integração contínua.",
     tags: ["Robot Framework", "API", "Python", "Automation"],
@@ -47,7 +52,6 @@ const projects: GitHubProject[] = [
 export default function Projects() {
   const { handleImageError, hasImageError } = useImageError();
 
-  // Show only first 3 projects
   const visibleProjectsList = projects.slice(0, 3);
 
   return (
@@ -72,8 +76,8 @@ export default function Projects() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {visibleProjectsList.map((project, index) => (
             <article
-              key={project.title}
-              className="project-card group relative bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary opacity-100 translate-y-0"
+              key={project.id}
+              className="project-card group relative bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Image */}
@@ -83,7 +87,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+                    loading={index === 0 ? "eager" : "lazy"}
                     onError={() => handleImageError(index)}
                   />
                 ) : (
@@ -96,7 +100,7 @@ export default function Projects() {
                 {/* Featured Badge */}
                 {project.featured && (
                   <span className="absolute top-3 right-3 px-3 py-1 bg-primary/90 text-dark-900 text-xs font-semibold rounded-full">
-                    Featured
+                    Destaque
                   </span>
                 )}
               </div>
@@ -159,7 +163,7 @@ export default function Projects() {
         {/* View All Link */}
         <div className="text-center mt-12">
           <a
-            href="https://github.com/rafarfelipe"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-medium rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-[hsl(var(--background))]"

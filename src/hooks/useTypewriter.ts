@@ -21,34 +21,25 @@ export function useTypewriter(
   const [isDeleting, setIsDeleting] = useState(false);
 
   const currentText = texts[textIndex];
-  const prevTextRef = useRef(texts[0]);
 
-  // Detecta mudança de palavra e reseta o texto
   useEffect(() => {
-    const currentFullText = texts[textIndex];
-    if (prevTextRef.current !== currentFullText) {
-      // Nova palavra - começa a digitar do zero
-      setDisplayedText("");
-      prevTextRef.current = currentFullText;
+    // Clamp textIndex to valid range if texts array changed
+    if (textIndex >= texts.length) {
+      setTextIndex(0);
+      return;
     }
-  }, [textIndex, texts]);
 
-  useEffect(() => {
     const timer = setTimeout(() => {
       if (!isDeleting) {
-        // Digitando
         if (displayedText.length < currentText.length) {
           setDisplayedText(currentText.slice(0, displayedText.length + 1));
         } else {
-          // Completou - espera e começa a apagar
           setIsDeleting(true);
         }
       } else {
-        // Apagando
         if (displayedText.length > 0) {
           setDisplayedText(displayedText.slice(0, displayedText.length - 1));
         } else {
-          // Terminou de apagar - vai para próxima palavra
           setIsDeleting(false);
           setTextIndex(prev => (prev + 1) % texts.length);
         }
@@ -56,7 +47,7 @@ export function useTypewriter(
     }, isDeleting ? deletingSpeed : (displayedText === currentText ? pauseDuration : typingSpeed));
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, textIndex, currentText, texts, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [displayedText, isDeleting, textIndex, texts.length, typingSpeed, deletingSpeed, pauseDuration]);
 
   return displayedText;
 }

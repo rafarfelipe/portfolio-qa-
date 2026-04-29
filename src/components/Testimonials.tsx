@@ -1,9 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useImageError } from "@/hooks/useImageError";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
-const testimonials = [
+interface Testimonial {
+  name: string;
+  role: string;
+  company: string;
+  image: string;
+  content: string;
+  rating: number;
+}
+
+const testimonials: Testimonial[] = [
   {
     name: "Ana Silva",
     role: "Tech Lead",
@@ -41,41 +52,17 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const [visibleTestimonials, setVisibleTestimonials] = useState<Set<number>>(new Set());
-  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
-  const sectionRef = useRef<HTMLElement>(null);
+  const { handleImageError, hasImageError } = useImageError();
 
-  const handleImageError = (index: number) => {
-    setImageErrors((prev) => new Set(prev).add(index));
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisibleTestimonials(new Set([0, 1, 2]));
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Auto-rotate testimonials
   useEffect(() => {
     if (isPaused) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-
+    const interval = setInterval(() => setCurrentIndex((prev) => (prev + 1) % testimonials.length), 5000);
     return () => clearInterval(interval);
   }, [isPaused]);
+  const { elementRef } = useIntersectionObserver<HTMLElement>({
+    threshold: 0.2,
+    freezeOnceVisible: true,
+  });
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -90,7 +77,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      ref={sectionRef}
+      ref={elementRef}
       className="py-20 sm:py-32 bg-[hsl(var(--card))]"
       aria-labelledby="testimonials-heading"
     >
@@ -168,7 +155,7 @@ export default function Testimonials() {
 
             {/* Author */}
             <div className="flex items-center justify-center gap-4">
-              {imageErrors.has(currentIndex) ? (
+              {hasImageError(currentIndex) ? (
                 <div className="w-14 h-14 rounded-full bg-[hsl(var(--muted))] flex items-center justify-center border-2 border-primary/30">
                   <span className="text-xl font-bold text-[hsl(var(--muted-foreground))]">
                     {currentTestimonial.name.charAt(0)}
@@ -179,7 +166,7 @@ export default function Testimonials() {
                   src={currentTestimonial.image}
                   alt={currentTestimonial.name}
                   className="w-14 h-14 rounded-full object-cover border-2 border-primary/30"
-                  loading="lazy"
+                  loading="eager"
                   onError={() => handleImageError(currentIndex)}
                 />
               )}
@@ -217,16 +204,11 @@ export default function Testimonials() {
         <div className="hidden lg:grid grid-cols-2 gap-6 mt-12">
           {testimonials.map((testimonial, index) => (
             <div
-              key={testimonial.name}
-              className={`p-6 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-xl hover:border-primary/30 transition-all duration-300 ${
-                visibleTestimonials.has(index)
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              key={index}
+              className="p-6 bg-[hsl(var(--background))] border border-[hsl(var(--border))] rounded-xl hover:border-primary/30 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
-                {imageErrors.has(index) ? (
+                {hasImageError(index) ? (
                   <div className="w-12 h-12 rounded-full bg-[hsl(var(--muted))] flex items-center justify-center">
                     <span className="text-lg font-bold text-[hsl(var(--muted-foreground))]">
                       {testimonial.name.charAt(0)}

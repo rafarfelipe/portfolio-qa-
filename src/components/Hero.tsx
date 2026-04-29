@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import { typewriterTexts } from "../constants";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { GITHUB_URL, LINKEDIN_URL } from "@/constants";
 
 export default function Hero() {
   const displayedText = useTypewriter(typewriterTexts);
@@ -16,9 +17,7 @@ export default function Hero() {
       role="banner"
     >
       <h1 id="hero-heading" className="sr-only">Rafael Felipe - QA Engineer Portfolio</h1>
-      {/* Animated Background */}
       <div className="absolute inset-0">
-        {/* Grid Pattern */}
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -31,7 +30,6 @@ export default function Hero() {
           }}
         />
 
-        {/* Floating Elements */}
         <div className="absolute inset-0">
           {["🐛", "✓", "🧪", "🔌", "⚡"].map((icon, i) => (
             <div
@@ -42,19 +40,18 @@ export default function Hero() {
                 left: `${5 + (i * 15)}%`,
                 animationDelay: `${i * 0.5}s`,
               }}
-              dangerouslySetInnerHTML={{ __html: icon }}
-            />
+              aria-hidden="true"
+            >
+              {icon}
+            </div>
           ))}
         </div>
 
-        {/* Gradient Orbs */}
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Status Badge */}
         <div
           className="inline-flex items-center gap-2 px-4 py-2 bg-[hsl(var(--card))] backdrop-blur border border-[hsl(var(--border))] rounded-full mb-6 animate-fade-in"
           role="status"
@@ -64,7 +61,6 @@ export default function Hero() {
           <span className="text-sm text-[hsl(var(--muted-foreground))]">Open to work</span>
         </div>
 
-        {/* Title */}
         <div className="mb-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
           <span className="block text-lg sm:text-xl text-[hsl(var(--muted-foreground))] mb-2">Olá, eu sou</span>
           <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
@@ -81,13 +77,11 @@ export default function Hero() {
           <span className="sr-only">{displayedText}</span>
         </div>
 
-        {/* Description */}
         <p className="text-[hsl(var(--muted-foreground))] text-lg sm:text-xl max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           Transformo bugs em features através de testes automatizados.
           Especialista em garantir qualidade com Cypress e Selenium
         </p>
 
-        {/* CTA Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
           <a
             href="#contact"
@@ -97,7 +91,7 @@ export default function Hero() {
             <ArrowRight size={20} />
           </a>
           <a
-            href="https://github.com/rafarfelipe"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
@@ -106,7 +100,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/rafaelrfelipe/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border border-[hsl(var(--border))] text-[hsl(var(--foreground))] font-semibold rounded-xl hover:border-primary hover:text-primary hover:-translate-y-1 transition-all duration-300"
@@ -116,7 +110,6 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-2 gap-4 sm:gap-8 max-w-xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-extrabold text-gradient">25%</div>
@@ -129,7 +122,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <a
         href="#about"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[hsl(var(--muted-foreground))] animate-bounce"
